@@ -1,0 +1,39 @@
+---
+title: "Massachusetts Income"
+author: "Jack Xu"
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+```
+
+```{r}
+# Fetch and clean median income data
+ma_income <- get_acs(
+  geography = "tract",
+  variables = "B19013_001E",
+  state = "MA",
+  year = 2021,
+  survey = "acs5",
+  geometry = TRUE,
+  progress = FALSE
+) %>%
+  select(GEOID, NAME, estimate, geometry) %>%
+  rename(median_income = estimate)
+
+# Plot
+ggplot(ma_income) +
+  geom_sf(aes(fill = median_income), color = NA) +
+  scale_fill_viridis_c(option = "plasma") +
+  theme_minimal() +
+  labs(
+    title = "Median Income by Census Tract in MA (2021)",
+    fill = "Income ($)",
+    caption = "Source: U.S. Census Bureau, ACS 5-Year Estimates"
+  )
+```
