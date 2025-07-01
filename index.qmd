@@ -38,7 +38,6 @@ ggplot(ma_income) +
   )
 ```
 
-## Summary
 This R code fetches median household income data for all census tracts in Massachusetts from the 2021 American Community Survey (ACS) using the tidycensus package. It selects and renames relevant columns for clarity and retains the geographic shapes for mapping. Then, it creates a choropleth map using ggplot2, shading each tract by median income with a plasma color scale. The map is styled with a minimal theme and includes a title, legend label, and source caption for context.
 
 ```{r}
@@ -54,5 +53,4 @@ ggplot(ma_income) +
   )
 ```
 
-## Summary
 The histogram of median income across Massachusetts census tracts in 2021 reveals a right-skewed distribution, with a majority of tracts having median incomes clustered in the lower to mid-range. There are fewer tracts with very high median incomes, which appear as a long tail on the right side of the histogram. This pattern suggests economic disparities across the state, with some census tracts experiencing substantially higher income levels than the majority. The visualization complements the spatial map by highlighting the frequency and spread of income values among different areas in Massachusetts.
